@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Since Aymen Said Yes 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-color: #111;
+      --text-color: #fff;
+      --accent-color: #f1c40f;
+      --heading-color: #ff6b81;
+    }
+    body.light {
+      --bg-color: #f5f5f5;
+      --text-color: #222;
+      --accent-color: #d35400;
+      --heading-color: #c0392b;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+    h1 {
+      font-size: 2.2em;
+      color: var(--heading-color);
+      margin-bottom: 20px;
+    }
+    #timer {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 25px;
+    }
+    #message {
+      font-size: 1.2em;
+      max-width: 90%;
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
+    #toggle-btn {
+      padding: 8px 16px;
+      font-size: 1em;
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #toggle-btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <h1>⏳ Since Aymen Said Yes 💖</h1>
+  <div id="timer">Loading...</div>
+  <div id="message">Just a little love reminder…</div>
+  <button id="toggle-btn">Toggle Dark/Light Mode</button>
+
+  <script>
+    const startDate = new Date("2024-01-03T03:33:00+03:00");
+
+    const messages = ['In every ticking second, I find your name written softly on my heartbeat 💓', 'The moon hides in shame when you smile 🌙💫', "You're the only melody that plays on repeat in the silence of my soul 🎶🖤", 'Every day with you feels like poetry—written without words but full of feeling ✍️💗', 'A thousand stars, but none shine like the light I see in your eyes ✨👀', 'Some souls were meant to collide—and ours did, with all the beauty in between 🌌💞', 'Your love is the gravity that keeps my chaos grounded 🪐❤️', 'Even when I’m lost, your name brings me home 🏡💌', 'Your silence speaks louder than a thousand words—because I still feel you 🕊️💭', 'If love had a face, it would look like your laugh on a sleepy morning ☕\U0001fa77', 'Don’t ever doubt how deeply I care for you 🌹', 'You’re the calm in my every storm ☁️💖', 'There’s comfort in knowing you exist in my world 🌎❤️', "Even your 'hmm' texts are precious to me 😂💬", 'Loving you feels like breathing—effortless and natural 🌬️💘', 'I hope today treats you gently, just like you deserve 🤍🌸', 'Your peace is my priority, always 🧘\u200d♀️🌿', 'I wish I could wrap you in a blanket of my thoughts right now 🛌\U0001fa75', 'If I could bottle your laugh, I’d keep it beside me forever 🫙🎧', 'May your heart feel hugged, even if I’m not around 🤗💓', 'You matter more than words can say 🫂', 'Aymen, you’re not just my person, you’re my peace 💆\u200d♀️💗', 'When I count blessings, I count you twice 💫🧿', 'Somewhere between missing you and loving you, I found home 🏠\U0001fa76', 'You’re the person I’d choose over and over again, without pause 🔁❤️', 'The world could end but I’d still be looking for your eyes in the stars 🌌👁️', 'If my heart wrote a diary, every page would begin with you 📖💖', "You're not a habit or phase, you're my forever 🛤️💍", "Caring for you isn't an option—it's instinct 💗", 'Every good morning and goodnight holds a piece of you in it ☀️🌙', 'Aap ki khushi meri duaon ka pehla hisa hoti hai 🤲💘', 'Aap ho toh sab kuch hai, warna sab kuch bhi adhoora lagta hai 🌙💔', 'Aap ka sukoon meri zimmedaari hai 💆\u200d♂️🌸', 'Aap ke bina waqt guzarta hai, lekin jeeta nahi jata 🕰️🖤', 'Aap ki hansi meri subah ban jaati hai ☀️😊', "You're the wish I never dared to ask for, but still got 🎁", 'I’ve read books, heard songs, seen movies—but nothing compares to you 🎬📖', 'You made me believe that the universe has favorites—and I’m one of them 🌌💘', 'When you’re okay, I’m okay. That’s how tied my heart is to yours 🫀🔗', 'This world is loud, but your love is my quiet place 🧘\u200d♂️💗', 'You deserve soft days, warm smiles, and someone who loves you endlessly 🕊️', "You don't have to say anything—just being you is enough 💝", 'No matter how ordinary the day is, you make it feel golden ☀️👑', 'Even on the worst days, loving you is still the easiest thing I do 🌧️❤️', 'The sky looks jealous—because I keep staring at you instead 🌤️🫣', 'I hope you never feel alone in this world while I’m breathing 🌍🫂', 'You’re not just loved—you’re deeply treasured 💌', 'Your mood affects mine, your smile heals mine 😌💖', 'Even the smallest part of your presence makes everything feel complete 🧩', "You're like gravity—pulling me closer no matter how far 🪐❤️\u200d🔥", 'You’re the softest part of my hardest days ☁️💞', 'I hope every little thing reminds you you’re loved 🌸', 'I don’t just love you—I admire you deeply 🫶', 'You’re the best part of my ordinary life 📅💖', 'You and peace feel like the same word to me ☮️💘'];
+
+    function updateTimer() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      const remHours = hours % 24;
+      const remMinutes = minutes % 60;
+      const remSeconds = seconds % 60;
+
+      document.getElementById("timer").textContent =
+        `${days} days, ${remHours} hours, ${remMinutes} minutes, ${remSeconds} seconds`;
+
+      const dayIndex = days % messages.length;
+      document.getElementById("message").textContent = messages[dayIndex];
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    document.getElementById("toggle-btn").addEventListener("click", () => {
+      document.body.classList.toggle("light");
+    });
+  </script>
+</body>
+</html>
